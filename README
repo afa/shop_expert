@@ -1,0 +1,9 @@
+есть тушка body, которой нравятся продукты product. тушка определяется ответами answer на вопросы question
+
+Body habtm answers habtm products
+
+Answer belongs question habtm bodies
+
+Question has many answers 
+
+обдумать блокирующие вопросы
