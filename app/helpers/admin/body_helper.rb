@@ -1,0 +1,2 @@
+module Admin::BodyHelper
+end
