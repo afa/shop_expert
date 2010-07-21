@@ -10,6 +10,15 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the new startup_accessing_site page/
+      new_startup_accessing_site_path
+
+    when /the new startup accessing site page/
+      new_startup accessing site_path
+
+    when /the new startup accessing site page/
+      new_startup accessing site_path
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
