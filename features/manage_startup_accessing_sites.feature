@@ -3,20 +3,15 @@ Feature: Manage startup_accessing_sites
   [stakeholder]
   wants [behaviour]
   
-  Scenario: Register new startup_accessing_site
-    Given I am on the new startup_accessing_site page
-    And I press "Create"
+  Scenario: First view to site
+    Given I am anonymous user
+    When I am accessing index page
+    Then I can view login link
+    And I can view quest selection
+    And I can view sections navigation
 
-  Scenario: Delete startup_accessing_site
-    Given the following startup_accessing_sites:
-      ||
-      ||
-      ||
-      ||
-      ||
-    When I delete the 3rd startup_accessing_site
-    Then I should see the following startup_accessing_sites:
-      ||
-      ||
-      ||
-      ||
+  Scenario: Anonymous access to admin
+    Given I am anonymous user
+    When I am accessing any admin page
+    Then I must logged in
+

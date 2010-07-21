@@ -1,14 +1,28 @@
-Given /^the following startup_accessing_sites:$/ do |startup_accessing_sites|
-  StartupAccessingSite.create!(startup_accessing_sites.hashes)
+Given /^I am anonymous user$/ do
+ @user = nil
 end
 
-When /^I delete the (\d+)(?:st|nd|rd|th) startup_accessing_site$/ do |pos|
-  visit startup_accessing_sites_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
-  end
+When /^I am accessing index page$/ do
+ get '/', (@user ? {:logon => @user} : {} )
 end
 
-Then /^I should see the following startup_accessing_sites:$/ do |expected_startup_accessing_sites_table|
-  expected_startup_accessing_sites_table.diff!(tableish('table tr', 'td,th'))
+Then /^I can view login link$/ do
+  pending # express the regexp above with the code you wish you had
 end
+
+Then /^I can view quest selection$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I can view sections navigation$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^I am accessing any admin page$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I must logged in$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
