@@ -6,9 +6,9 @@
 # and recreated between test runs.  Don't rely on the data there!
 
 config.gem "faker"
-#config.gem "factory-girl"
-#config.gem "rspec"
-#config.gem "rspec-rails"
+config.gem "factory_girl"
+config.gem "rspec", :lib=>'spec'
+config.gem "rspec-rails", :lib=>false
 #config.gem "cucumber"
 
 config.cache_classes = true
