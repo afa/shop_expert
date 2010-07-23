@@ -19,7 +19,7 @@ Then /^I can view sections navigation$/ do
 end
 
 When /^I am accessing any admin page$/ do
-  pending # express the regexp above with the code you wish you had
+ get '/admin', (@user ? {:logon => @user} : {})
 end
 
 Then /^I must logged in$/ do
