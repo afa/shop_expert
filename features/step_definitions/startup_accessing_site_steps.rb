@@ -3,7 +3,8 @@ Given /^I am anonymous user$/ do
 end
 
 When /^I am accessing index page$/ do
- get '/', (@user ? {:logon => @user} : {} )
+ sign_in :user, @user if @user
+ get '/'
 end
 
 Then /^I can view login link$/ do
@@ -19,10 +20,19 @@ Then /^I can view sections navigation$/ do
 end
 
 When /^I am accessing any admin page$/ do
- get '/admin', (@user ? {:logon => @user} : {})
+ sign_in :user, @user if @user
+ get '/admin'
 end
 
-Then /^I must logged in$/ do
+Then /^I must be redirected to logging page$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^I am logged in user$/ do
+  @user = Factory(:user)
+end
+
+Given /^I am has no admin role$/ do
   pending # express the regexp above with the code you wish you had
 end
 
