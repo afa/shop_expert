@@ -9,6 +9,7 @@ config.gem "faker"
 config.gem "factory_girl"
 config.gem "rspec", :lib=>'spec'
 config.gem "rspec-rails", :lib=>false
+config.gem "webrat"
 #config.gem "cucumber"
 
 config.cache_classes = true

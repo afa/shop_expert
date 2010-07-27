@@ -15,3 +15,11 @@ Factory.define :question do |q|
  q.name { Factory.next(:question_name) }
 # q.name {Sham.question}
 end
+
+Factory.sequence :answer_name do |n|
+ "answer_#{n}"
+end
+
+Factory.define :answer do |a|
+ a.name { Factory.next(:answer_name) }
+end

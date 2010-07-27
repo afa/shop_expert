@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |adm|
    adm.index '/', :controller=>'main', :action=>'index'
 #   adm.login '/login', :controller=>'main', :action=>'login'
-   adm.resources :question
+   adm.resources :question do |question|
+    question.resources :answer
+   end
   end
 end
