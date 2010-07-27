@@ -10,6 +10,9 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the new admin_question page/
+      new_admin_question_path
+
     when /the new startup_accessing_site page/
       new_startup_accessing_site_path
 

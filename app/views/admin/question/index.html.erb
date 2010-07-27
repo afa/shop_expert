@@ -1,0 +1,3 @@
+<% @questions.each do |q| %>
+<%= link_to h(q.name), admin_question_path(q) %><%= link_to "Edit", edit_admin_question_path(q) %>
+<%end%>
