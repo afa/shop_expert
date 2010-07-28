@@ -1,0 +1,5 @@
+<% form_for @question, :url=>admin_question_path(@question), :method=>:put do |f| %>
+ <%= f.text_field :name %>
+ <%= f.submit %>
+<%end%>
+

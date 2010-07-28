@@ -25,5 +25,13 @@ Feature: Manage admin_questions
   When I fill name field
   And click submit button
   Then new record added to Question
-  And record name eq filled
   And I am redirected to single question view
+
+ Scenario: Edit question
+  Given existing question record
+  And I am getting question edit page
+  And edition form with fields filled from record
+  When I change name
+  And submit form
+  Then record must be updated from form
+  And I am should be redirected to question view

@@ -58,22 +58,54 @@ Given /^I am getting questions\/new$/ do
 end
 
 When /^I fill name field$/ do
-  pending # express the regexp above with the code you wish you had
+ response.should have_selector('form') do |form|
+  form.should have_selector('input', :name=>'question[name]')
+ end
+ fill_in 'question[name]', :with=>'test create'
 end
 
 When /^click submit button$/ do
-  pending # express the regexp above with the code you wish you had
+ @q_count = Question.count
+ click_button 'Save changes'
 end
 
 Then /^new record added to Question$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^record name eq filled$/ do
-  pending # express the regexp above with the code you wish you had
+ @q_count.should < Question.count
 end
 
 Then /^I am redirected to single question view$/ do
-  pending # express the regexp above with the code you wish you had
+ response.should be_success
+ current_url.should =~ /\/admin\/question\/\d+$/
+end
+
+Given /^existing question record$/ do
+ @question = Factory(:question)
+end
+
+Given /^I am getting question edit page$/ do
+ visit edit_admin_question_path(@question)
+end
+
+Given /^edition form with fields filled from record$/ do
+ response.should have_selector('form') do |form|
+  form.should have_selector('input', :name=>'question[name]', :value=>@question.name)
+ end
+end
+
+When /^I change name$/ do
+ fill_in 'question[name]', :with=>'testing it'
+end
+
+When /^submit form$/ do
+ click_button 'Save changes'
+ response.should be_success
+end
+
+Then /^record must be updated from form$/ do
+ Question.find(@question.id).name.should == 'testing it'
+end
+
+Then /^I am should be redirected to question view$/ do
+ current_url.should =~ /\/admin\/question\/#{@question.id}$/
 end
 
