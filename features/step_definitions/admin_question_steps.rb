@@ -109,3 +109,48 @@ Then /^I am should be redirected to question view$/ do
  current_url.should =~ /\/admin\/question\/#{@question.id}$/
 end
 
+Given /^existing question record with answers$/ do
+ @question = Factory(:question)
+ 5.times{ @question.answers << Factory.build(:answer) }
+ @question.save
+end
+
+Given /^I am getting show page$/ do
+ visit admin_question_path(@question)
+end
+
+Given /^I can view button add answer$/ do
+ response.should have_selector('div', :id=>'question_answers_adder') do |f|
+  f.should have_selector('input', :value=>'Add answer', :type=>'button')
+ end
+end
+
+Given /^I can view answers list$/ do
+ @question.answers.each{|a| response.should contain(a.name) }
+end
+
+When /^I click button add answer$/ do
+ xhr :get, new_admin_question_answer_path(@question)
+ response.should have_rjs(:replace_html, 'question_answers_adder')
+end
+
+When /^fill answer name$/ do
+ #fill_in 'answer[name]', :with=>'testing it'
+end
+
+When /^confirm addition$/ do
+ xhr :post, admin_question_answer_index_path(@question, 'answer[name]'=>'testing it', 'answer[question_id]'=>@question.id)
+ response.should have_rjs(:replace_html, 'question_answers_adder')
+ #click_button "Save answer"
+end
+
+Then /^answer added  to question$/ do
+ @question.answers.find_by_name('testing it').should_not be_nil
+end
+
+Then /^answer showed in answers list$/ do
+ response.should have_rjs(:replace_html, 'question_answers') do |f|
+  f.should contain 'testing it'
+ end
+end
+

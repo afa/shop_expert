@@ -1,2 +1,3 @@
-<h1>Admin::Main#index</h1>
-<p>Find me in app/views/admin/main/index.html.erb</p>
+<div><div><%= link_to "All questions", admin_question_index_path %></div><%= render :partial=>'admin/question/item', :collection=>@questions %></div>
+<div><div><%= link_to "All bodies", admin_body_index_path %></div><%= render :partial=>'admin/body/item', :collection=>@bodies %></div>
+<div><div><%= link_to "All products", admin_product_index_path %></div><%= render :partial=>'admin/product/item', :collection=>@products %></div>

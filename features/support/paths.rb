@@ -10,6 +10,9 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the new quest_view page/
+      new_quest_view_path
+
     when /the new admin_question page/
       new_admin_question_path
 

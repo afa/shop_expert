@@ -35,3 +35,14 @@ Feature: Manage admin_questions
   And submit form
   Then record must be updated from form
   And I am should be redirected to question view
+
+ Scenario: Add answers to question
+  Given existing question record with answers
+  And I am getting show page
+  And I can view button add answer
+  And I can view answers list
+  When I click button add answer
+  And fill answer name
+  And confirm addition
+  Then answer added  to question
+  And answer showed in answers list

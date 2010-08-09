@@ -1,6 +1,6 @@
 <%= link_to "Edit", edit_admin_question_path(@question) %>
 <%= link_to "Delete", admin_question_path(@question), :method=>:delete %>
 <h4><%= h @question.name %></h4>
-<%#= render :partal=>'admin/answer/item', :locals=>{:item=>@question.answers.first} %>
-<%= render :partial=>'admin/answer/item', :collection=>@question.answers %>
+<div id="question_answers"><%= render :partial=>'admin/answer/item', :collection=>@question.answers %></div>
+<div id="question_answers_adder"><%= render :partial=>'admin/answer/button_add_answer', :locals=>{:question=>@question}%></div>
 <%= link_to 'Index', admin_question_index_path %>

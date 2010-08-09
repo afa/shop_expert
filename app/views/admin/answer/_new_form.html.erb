@@ -1,0 +1,5 @@
+<% remote_form_for :answer, :url=>admin_question_answer_index_path(question) do |aform| %>
+ <%= aform.text_field :name %>
+ <%= aform.hidden_field :question_id, :value=>question.id %>
+ <%= aform.submit "Save answer" %>
+<% end %>

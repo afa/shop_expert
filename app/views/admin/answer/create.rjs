@@ -1,0 +1,2 @@
+page.replace_html('question_answers_adder', :partial=>'admin/answer/button_add_answer', :locals=>{:question=>@question})
+page.replace_html('question_answers', :partial=>"admin/answer/item", :collection=>@question.answers)

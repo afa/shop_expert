@@ -1,0 +1,1 @@
+page.replace_html('question_answers_adder', :partial=>"admin/answer/new_form", :locals=>{:question=>@question})

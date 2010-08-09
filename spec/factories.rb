@@ -23,3 +23,27 @@ end
 Factory.define :answer do |a|
  a.name { Factory.next(:answer_name) }
 end
+
+Factory.sequence :body_name do |n|
+ "body_#{n}"
+end
+
+Factory.define :body do |b|
+ b.name { Factory.next(:body_name) }
+end
+
+Factory.sequence :product_name do |n|
+ "product_#{n}"
+end
+
+Factory.define :product do |b|
+ b.name { Factory.next(:product_name) }
+end
+
+Factory.sequence :section_name do |n|
+ "section_#{n}"
+end
+
+Factory.define :section do |b|
+ b.name { Factory.next(:section_name) }
+end

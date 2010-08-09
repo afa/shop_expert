@@ -2,11 +2,21 @@ require 'spec_helper'
 
 describe "/admin/main/index" do
   before(:each) do
-    render 'admin/main/index'
+   6.times{ Factory(:question) }
+   assigns['questions'] = Question.lasts(5).all
+   6.times{ Factory(:body) }
+   assigns['body'] = Body.lasts(5).all
   end
 
-  #Delete this example and add some real ones or delete this file
-  it "should tell you where to find the file" do
-    response.should have_tag('p', %r[Find me in app/views/admin/main/index])
+  it "should render partial question _item" do
+   template.should_receive(:render).with(:partial=>'admin/question/item', :collection=>assigns['questions']).and_return 'rendered questions'
+   render 'admin/main/index'
+   response.should contain('rendered questions')
+  end
+
+  it "should render partial body _item" do
+   template.should_receive(:render).with(:partial=>'admin/body/item', :collection=>assigns['bodies']).and_return 'rendered bodies'
+   render 'admin/main/index'
+   response.should contain('rendered bodies')
   end
 end

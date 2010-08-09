@@ -1,0 +1,6 @@
+<% if question %>
+ <%= question.name %>
+ <% question.answers.each do |a| %>
+  <%= link_to h(a.name), select_question_answer_path(question, a) %>
+ <% end %>
+<% end %>

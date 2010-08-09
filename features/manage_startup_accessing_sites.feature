@@ -4,19 +4,20 @@ Feature: Manage startup_accessing_sites
   wants [behaviour]
   
   Scenario: First view to site
-#    Given I am anonymous user
+   Given I am with prepared questions
+   And prepared sections
     When I am accessing index page
-#    Then I can view login link
-    And I can view quest selection
+    Then I can view quest selection
     And I can view sections navigation
 
-#  Scenario: Anonymous access to admin
-#    Given I am anonymous user
-#    When I am accessing any admin page
-#    Then I must be redirected to logging page
-
-#  Scenario: Logged in user accessing admin
-#   Given I am logged in user
-#   And I am has no admin role
-#   When I am accessing any admin page
-#   Then I must be redirected to logging page
+  Scenario: view to admin index
+   Given I am with prepared questions
+   And prepared bodies
+   And prepared products
+   When I am getting admin index page
+   Then I can view list of last questions
+   And I can view list of last bodies
+   And I can view list of last products
+   And I can view link to questions page
+   And I can view link to bodies page
+   And I can view link to products page
