@@ -10,6 +10,9 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the new admin_product page/
+      new_admin_product_path
+
     when /the new admin_bodies page/
       new_admin_bodies_path
 

@@ -36,8 +36,13 @@ Factory.sequence :product_name do |n|
  "product_#{n}"
 end
 
+Factory.sequence :product_desc do |n|
+ "product description #{n}"
+end
+
 Factory.define :product do |b|
  b.name { Factory.next(:product_name) }
+ b.description { Factory.next(:product_desc) }
 end
 
 Factory.sequence :section_name do |n|
@@ -46,4 +51,8 @@ end
 
 Factory.define :section do |b|
  b.name { Factory.next(:section_name) }
+end
+
+Factory.define :picture do |p|
+ p.type 'Picture'
 end

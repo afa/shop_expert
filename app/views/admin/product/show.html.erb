@@ -1,2 +1,5 @@
-<h1>Admin::Product#show</h1>
-<p>Find me in app/views/admin/product/show.html.erb</p>
+<h1><%= h @product.name %></h1>
+<div><%= h @product.description %></div>
+<% @product.pictures.each do |p| %>
+ <div><%= image_tag p.data.url %></div>
+<% end %>

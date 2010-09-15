@@ -5,4 +5,8 @@ class Product < ActiveRecord::Base
  has_many :pictures, :source=>:things, :as=>:thingable
 
  named_scope :lasts, lambda{|n| { :order=>"created_at desc", :limit=>n } }
+
+ def cover
+  self.pictures.first
+ end
 end
